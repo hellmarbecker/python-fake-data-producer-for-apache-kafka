@@ -2,23 +2,17 @@ from faker.providers import BaseProvider
 import random
 import time
 
+NUMBER_HOSTS = 100000
+NUMBER_CPU = 30
 
-class MetricProvider(BaseProvider):
+
+class MetricAdvancedProvider(BaseProvider):
     def hostname(self):
-        validIds = [
-            "doc",
-            "grumpy",
-            "sleepy",
-            "bashful",
-            "happy",
-            "sneezy",
-            "dopey",
-        ]
-        return validIds[random.randint(0, len(validIds) - 1)]
+        return "hostname" + str(random.randint(0, NUMBER_HOSTS))
 
     def cpu_id(self):
-        validIds = ["cpu1", "cpu2", "cpu3", "cpu4", "cpu5"]
-        return validIds[random.randint(0, len(validIds) - 1)]
+
+        return "cpu" + str(random.randint(0, NUMBER_CPU))
 
     def usage(self):
         return random.random() * 30 + 70
